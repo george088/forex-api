@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_18_141644) do
+ActiveRecord::Schema.define(version: 2019_01_18_141906) do
 
   create_table "quotes", force: :cascade do |t|
     t.float "open"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2019_01_18_141644) do
     t.float "close"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "symbol"
   end
 
   create_table "users", force: :cascade do |t|
