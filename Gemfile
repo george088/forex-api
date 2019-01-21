@@ -42,6 +42,9 @@ gem 'slim-rails'
 # whenever cron tasks
 gem 'whenever', require: false
 
+# working with archives
+gem 'rubyzip', '>= 1.0.0'
+
 # Devise autorization
 gem 'devise'
 
