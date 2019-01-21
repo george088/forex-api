@@ -39,6 +39,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Slim HTML generator
 gem 'slim-rails'
 
+# whenever cron tasks
+gem 'whenever', require: false
+
 # Devise autorization
 gem 'devise'
 
