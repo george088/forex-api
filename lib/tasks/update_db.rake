@@ -1,5 +1,5 @@
 require 'open-uri'
-require 'rubygems/package'
+# require 'rubygems/package'
 require 'zlib'
 
 namespace :update_db do
@@ -14,20 +14,21 @@ namespace :update_db do
     Ticketlist.select(:sybmol).each do |ticket|
       url = "https://candledata.fxcorporate.com/D1/#{ticket.sybmol}/2012.csv.gz"
       folder = "#{Rails.root}/downloaded/"
+      file_name = "#{ticket.sybmol}_2012"
+      
+      puts file_name
 
-      open(folder + "#{ticket.sybmol}_2012.csv.gz", 'wb') do |file|
+      sss = folder + file_name + '.csv.gz'
+      puts sss
+
+      open(folder + file_name + '.csv.gz', 'wb') do |file|
         file << open(url).read
-
-        gz_extract = Zlib::GzipReader.open(file)
-        gz_extract.rewind # The extract has to be rewinded after every iteration
-        gz_extract.each do |entry|
-          puts entry.full_name
-          puts entry.directory?
-          puts entry.file?
-          # puts entry.read
-        end
-        gz_extract.close
       end
+
+      Zlib::GzipReader.open(sss).each_line do |gz|
+        puts gz
+      end
+
     end
   end
 end

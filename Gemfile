@@ -45,6 +45,9 @@ gem 'whenever', require: false
 # working with archives
 gem 'rubyzip', '>= 1.0.0'
 
+# zlib
+gem 'zlib'
+
 # Devise autorization
 gem 'devise'
 
