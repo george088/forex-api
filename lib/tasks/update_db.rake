@@ -18,7 +18,8 @@ namespace :update_db do
 
       Zlib::GzipReader.open(full_path).each_line do |gz|
           # teper' nugno razdelit'
-          puts gz
+          line = gz.split(',')
+          Quotes.create datestamp
       end
 
     end
