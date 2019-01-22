@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   devise_for :users
   # get 'index' => 'index#index'
   root to: 'index#index'
+
+  get 'new_key' => 'index#new_key'
 end
