@@ -4,12 +4,14 @@ class IndexController < ApplicationController
   before_action :load_allrows, only: [:index]
 
   def index
-    
+
   end
 
-  def new_key 
-    user.api_key = generate_api_key
-    redirect_to user
+  def new_key
+    current_user.apikey = SecureRandom.base64.tr('+/=', 'Qrt')
+    current_user.save
+
+    redirect_to ''
   end
 
   private
