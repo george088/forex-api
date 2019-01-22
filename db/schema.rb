@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_21_104746) do
+ActiveRecord::Schema.define(version: 2019_01_22_120848) do
 
   create_table "quotes", force: :cascade do |t|
     t.float "open"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2019_01_21_104746) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "symbol"
+    t.date "datestamp"
   end
 
   create_table "ticketlists", force: :cascade do |t|
