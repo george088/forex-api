@@ -1,5 +1,4 @@
 require 'open-uri'
-# require 'rubygems/package'
 require 'zlib'
 
 class LoadQuotes < ActiveRecord::Migration[5.2]
