@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_22_120848) do
+ActiveRecord::Schema.define(version: 2019_01_22_133630) do
 
   create_table "quotes", force: :cascade do |t|
     t.float "open"
