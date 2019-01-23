@@ -43,6 +43,13 @@
     <p> <%= link_to 'update api key', new_key_url, :class => 'btn btn-danger' %>
   </div>
 
+  <div class="field">
+    <%= f.label :role %><br />
+    <%= f.text_field :role, readonly: true  %>
+
+    
+  </div>
+
   <div class="actions">
     <%= f.submit "Ok" %>
   </div>
