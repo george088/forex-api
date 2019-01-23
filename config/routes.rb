@@ -7,4 +7,5 @@ Rails.application.routes.draw do
 
   get 'new_key' => 'index#new_key'
   get 'upgrade' => 'index#upgrade'
+  put 'upgrading' => 'index#upgrading'
 end

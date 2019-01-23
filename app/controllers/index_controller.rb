@@ -12,6 +12,13 @@ class IndexController < ApplicationController
     render action: 'upgrade'
   end
 
+  # change account role
+  def upgrading
+    change_role_to_prem if current_user.role == 'base'
+
+    redirect_to edit_user_registration_path
+  end
+
   def new_key
     current_user.apikey = SecureRandom.base64.tr('+/=', '')
     current_user.save
@@ -30,5 +37,10 @@ class IndexController < ApplicationController
         token = SecureRandom.base64.tr('+/=', '')
         break token unless User.exists?(apikey: token)
       end
+    end
+
+    def change_role_to_prem
+      current_user.role = 'premium'
+      current_user.save
     end
 end
