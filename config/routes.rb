@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   root to: 'index#index'
 
   get 'new_key' => 'index#new_key'
+  get 'upgrade' => 'index#upgrade'
 end

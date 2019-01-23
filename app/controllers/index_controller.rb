@@ -4,7 +4,12 @@ class IndexController < ApplicationController
   before_action :load_allrows, only: [:index]
 
   def index
+  end
 
+  # upgrade account
+  def upgrade
+
+    render action: 'upgrade'
   end
 
   def new_key
