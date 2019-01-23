@@ -8,10 +8,10 @@ class IndexController < ApplicationController
   end
 
   def new_key
-    current_user.apikey = SecureRandom.base64.tr('+/=', 'Qrt')
+    current_user.apikey = SecureRandom.base64.tr('+/=', '')
     current_user.save
 
-    redirect_to ''
+    redirect_to edit_user_registration_path
   end
 
   private
@@ -22,7 +22,7 @@ class IndexController < ApplicationController
     # Generate a unique API key
     def generate_api_key
       loop do
-        token = SecureRandom.base64.tr('+/=', 'Qrt')
+        token = SecureRandom.base64.tr('+/=', '')
         break token unless User.exists?(apikey: token)
       end
     end
