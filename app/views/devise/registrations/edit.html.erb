@@ -39,6 +39,8 @@
   <div class="field">
     <%= f.label :apikey %><br />
     <%= f.text_field :apikey, readonly: true  %>
+
+    <p> <%= link_to 'update api key', new_key_url, :class => 'btn btn-danger' %>
   </div>
 
   <div class="actions">
@@ -47,5 +49,5 @@
 <% end %>
 
 <p> <%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger' %></p>
-<p> <%= link_to 'update api key', new_key_url, :class => 'btn btn-danger' %>
+
 <%= link_to "Back", :back %>
