@@ -8,4 +8,10 @@ Rails.application.routes.draw do
   get 'new_key' => 'index#new_key'
   get 'upgrade' => 'index#upgrade'
   put 'upgrading' => 'index#upgrading'
+
+  scope 'api' do
+    scope 'v1' do
+      get 'tickets_list' => 'api#tickets_list'
+    end
+  end
 end
