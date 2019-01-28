@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   scope 'api' do
     scope 'v1' do
       get 'tickets_list' => 'api#tickets_list'
+      get 'quotes' => 'api#quotes'
     end
   end
 end
