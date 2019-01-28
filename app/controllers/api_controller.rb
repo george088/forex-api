@@ -33,8 +33,8 @@ class ApiController < ApplicationController
     date_to = Date.parse(params[:to])
     return render json: {'Missing dates': 'wrong format'}, status: :ok if date_from > date_to
 
-    render json: Quote.where(symbol: params[:ticket], datestamp: date_from..date_to).pluck(:open, :high, :low, :close, :symbol, :datestamp) if params[:type] == 'OHLC'
-    render json: Quote.where(symbol: params[:ticket], datestamp: date_from..date_to).pluck(:close, :symbol, :datestamp) if params[:type] == 'close'
+    render json: { "#{params[:ticket]}" => Quote.where(symbol: params[:ticket], datestamp: date_from..date_to).pluck(:open, :high, :low, :close, :datestamp), status: :ok} if params[:type] == 'OHLC'
+    render json: { "#{params[:ticket]}" => Quote.where(symbol: params[:ticket], datestamp: date_from..date_to).pluck(:close, :datestamp), status: :ok} if params[:type] == 'close'
   end
 
   # /v1/quotes_for_date?key=user_api-key&type=(OHLC/close)&for_date=YYYY-mm-dd
@@ -46,8 +46,8 @@ class ApiController < ApplicationController
     return render json: {'Missing dates': 'wrong format'}, status: :ok if (date_validate(params[:for_date]).nil?)
     date_from = Date.parse(params[:for_date])
 
-    render json: Quote.where(datestamp: params[:for_date], symbol: get_tickets(@api_current_user.role)).pluck(:open, :high, :low, :close, :symbol, :datestamp) if params[:type] == 'OHLC'
-    render json: Quote.where(datestamp: params[:for_date], symbol: get_tickets(@api_current_user.role)).pluck(:close, :symbol, :datestamp) if params[:type] == 'close'
+    render json: { "#{params[:ticket]}" => Quote.where(datestamp: params[:for_date], symbol: get_tickets(@api_current_user.role)).pluck(:open, :high, :low, :close, :datestamp), status: :ok} if params[:type] == 'OHLC'
+    render json: { "#{params[:ticket]}" => Quote.where(datestamp: params[:for_date], symbol: get_tickets(@api_current_user.role)).pluck(:close, :datestamp), status: :ok} if params[:type] == 'close'
   end
 
   private
