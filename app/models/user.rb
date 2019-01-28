@@ -12,7 +12,7 @@ class User < ApplicationRecord
   # Generate a unique API key
   def generate_api_key
     loop do
-      token = SecureRandom.base64.tr('+/=', 'Qrt')
+      token = SecureRandom.base64.tr('+/=', '')
       break token unless User.exists?(apikey: token)
     end
   end
