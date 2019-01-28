@@ -18,7 +18,8 @@ class ApiController < ApplicationController
 
   # api /api/v1/get_key_by_email?email=?
   def get_key_by_email
-    render json: {'apikey' => User.where(email: params[:email]).pluck(:apikey)[0], status: :ok} if User.exists?(email: params[:email])
+    return render json: 'email user not_found', status: :not_found unless User.exists?(email: params[:email])
+    render json: {'apikey' => User.where(email: params[:email]).pluck(:apikey)[0], status: :ok}
   end
 
   # api/v1/quotes?key=?&ticket=?&type=(OHLC/close)&from=YYYY-mm-dd&to=YYYY-mm-dd
