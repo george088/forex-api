@@ -16,6 +16,11 @@ class ApiController < ApplicationController
     render json:  ticketlist, status: :ok
   end
 
+  # api /api/v1/get_key_by_email?email=?
+  def get_key_by_email
+    render json: 'apikey' => User.find_by(email: params[:email]).pluck(:apikey).to_s, status: :ok if User.exists?(email: params[:email])
+  end
+
   # api/v1/quotes?key=?&ticket=?&type=(OHLC/close)&from=YYYY-mm-dd&to=YYYY-mm-dd
   def quotes
     check_params = ['key', 'ticket', 'type', 'from', 'to']
@@ -60,7 +65,7 @@ class ApiController < ApplicationController
 
     def get_tickets acc
       ass = [false]
-      ass = [false, true] if acc == 'premium'
+      ass << true if acc == 'premium'
       Ticketlist.where(:for_premium => ass).pluck(:sybmol)
     end
 end
