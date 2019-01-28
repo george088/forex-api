@@ -58,8 +58,4 @@ class ApiController < ApplicationController
     def user_auth_by_key
       return render json: 'user not_found', status: :not_found unless User.exists?(apikey: params[:key])
     end
-
-    def choose_type type
-       if type == 'OHLC'
-    end
 end
