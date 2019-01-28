@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get 'tickets_list' => 'api#tickets_list'
       get 'quotes' => 'api#quotes'
       get 'quotes_for_date' => 'api#quotes_for_date'
+      get 'get_key_by_email' => 'api#get_key_by_email'
     end
   end
 end
