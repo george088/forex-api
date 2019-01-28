@@ -1,6 +1,6 @@
 class ApiController < ApplicationController
-  before_action :user_auth_by_key
-  before_action :get_user
+  before_action :user_auth_by_key, except: [:get_key_by_email]
+  before_action :get_user, except: [:get_key_by_email]
   # before_action :check_access
   # /api/v1/tickets_list?key=...
   def tickets_list
@@ -18,7 +18,7 @@ class ApiController < ApplicationController
 
   # api /api/v1/get_key_by_email?email=?
   def get_key_by_email
-    render json: 'apikey' => User.find_by(email: params[:email]).pluck(:apikey).to_s, status: :ok if User.exists?(email: params[:email])
+    render json: {'apikey' => User.where(email: params[:email]).pluck(:apikey)[0], status: :ok} if User.exists?(email: params[:email])
   end
 
   # api/v1/quotes?key=?&ticket=?&type=(OHLC/close)&from=YYYY-mm-dd&to=YYYY-mm-dd
